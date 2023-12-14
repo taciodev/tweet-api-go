@@ -29,3 +29,18 @@ func (t *tweetController) Create(ctx *gin.Context) {
 	t.tweets = append(t.tweets, *tweet)
 	ctx.JSON(http.StatusOK, t.tweets)
 }
+
+func (t *tweetController) Delete(ctx *gin.Context) {
+	id := ctx.Param("id")
+
+	for index, tweet := range t.tweets {
+		if tweet.ID == id {
+			t.tweets = append(t.tweets[:index], t.tweets[index+1:]...)
+			return
+		}
+	}
+
+	ctx.JSON(http.StatusNotFound, gin.H{
+		"error": "Tweet not found",
+	})
+}
