@@ -1,18 +1,15 @@
 package main
 
 import (
-	"net/http"
+	"api/api/routes"
 
 	"github.com/gin-gonic/gin"
 )
 
 func main() {
 	app := gin.Default()
-	app.GET("/v1", func(ctx *gin.Context) {
-		ctx.JSON(http.StatusOK, gin.H{
-			"message": "Hello World!",
-		})
-	})
+
+	routes.AppRoutes(app)
 
 	app.Run(":8080")
 }

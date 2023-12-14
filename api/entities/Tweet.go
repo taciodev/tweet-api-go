@@ -7,7 +7,7 @@ type Tweet struct {
 	Description string `json:"description"`
 }
 
-func NewTweet(id string, description string) *Tweet {
+func NewTweet() *Tweet {
 	tweet := Tweet{
 		ID: uuid.New(),
 	}
